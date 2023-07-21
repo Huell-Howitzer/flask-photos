@@ -1,6 +1,3 @@
-from flask import Flask, jsonify
-import os
-
 import os
 import random
 import string
@@ -154,4 +151,5 @@ def index():
 
 
 if __name__ == '__main__':
-    app.run(debug=True, port=os.getenv("PORT", default=5000))
+    app.run(debug=True)
+

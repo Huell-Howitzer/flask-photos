@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <style>
+        body {
+            background-color: #40FF0C; /* Set a unique background color for the login page */
+        }
+    </style>
+    <h1>Login</h1>
+    <form method="POST" action="{{ url_for('login') }}">
+        {{ form.hidden_tag() }}
+        <div class="field">
+            <label class="label">{{ form.phone_number.label }}</label>
+            <div class="control">
+                {{ form.phone_number(class_="input") }}
+            </div>
+        </div>
+        <div class="field">
+            <div class="control">
+                {{ form.submit(class_="button is-primary") }}
+            </div>
+        </div>
+    </form>
+{% endblock %}
+

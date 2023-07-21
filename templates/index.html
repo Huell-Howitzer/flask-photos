@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero is-fullheight is-primary is-bold">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        Welcome to Family Photos!
+      </h1>
+      <h2 class="subtitle">
+        Store and share your precious memories.
+      </h2>
+    </div>
+  </div>
+</section>
+
+<div id="image-grid" style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+  <!-- Placeholder images will be inserted here -->
+</div>
+
+<script>
+let pageNumber = 0;
+
+function loadImages() {
+  pageNumber++;
+  for (let i = 0; i < 10; i++) { // load 10 images at a time
+    // Generate random width and height between 200 and 500
+    const randomWidth = Math.floor(Math.random() * 300) + 200;
+    const randomHeight = Math.floor(Math.random() * 300) + 200;
+
+    const img = document.createElement('img');
+    img.src = `https://baconmockup.com/${randomWidth}/${randomHeight}`;
+    img.style.width = '30%';
+    img.style.marginBottom = '1em';
+    document.getElementById('image-grid').appendChild(img);
+  }
+}
+
+window.onscroll = function() {
+  if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+    // Reached bottom of the page, load more images
+    loadImages();
+  }
+};
+
+// Initial image load
+loadImages();
+</script>
+
+{% endblock %}

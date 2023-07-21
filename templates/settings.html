@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Settings{% endblock %}
+
+{% block content %}
+    <h1>Settings</h1>
+    <form method="post" action="/settings">
+        <div class="form-group">
+            <label for="theme">Theme:</label>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="theme" id="light" value="light" {% if theme == 'light' %}checked{% endif %}>
+                <label class="form-check-label" for="light">Light</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="theme" id="dark" value="dark" {% if theme == 'dark' %}checked{% endif %}>
+                <label class="form-check-label" for="dark">Dark</label>
+            </div>
+        </div>
+        <button class="btn btn-primary" type="submit">Save</button>
+    </form>
+{% endblock %}

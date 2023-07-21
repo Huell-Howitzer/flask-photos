@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <style>
+  body {
+    background-color: #FFFFCC; /* Set a unique background color for the register page */
+  }
+</style>
+  <section class="section">
+    <div class="container">
+      <h1 class="title">Register</h1>
+      <form method="POST" action="{{ url_for('register') }}">
+        {{ form.hidden_tag() }}
+        <div class="field">
+          <label class="label">user_id</label>
+          <div class="control">
+            {{ form.user_id(class_="input") }}
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Passphrase</label>
+          <div class="control">
+            {{ form.password(class_="input") }}
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Phone Number</label>
+          <div class="control">
+            {{ form.phone_number(class_="input") }}
+          </div>
+        </div>
+        <div class="field">
+          <div class="control">
+            <button type="submit" class="button is-primary">Register</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+{% endblock %}
+

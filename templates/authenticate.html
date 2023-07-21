@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Authentication</h1>
+  {% with messages = get_printed_messages() %}
+    {% if messages %}
+      <ul class="messages">
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
+
+  <form method="POST" action="{{ url_for('authenticate') }}">
+    {{ form.hidden_tag() }}
+
+    <div class="form-group">
+      {{ form.passphrase.label }}
+      {{ form.passphrase(class_='form-control') }}
+      {% if form.passphrase.errors %}
+        <ul class="errors">
+          {% for error in form.passphrase.errors %}
+            <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
+
+    <button type="submit" class="btn btn-primary">Authenticate</button>
+  </form>
+{% endblock %}

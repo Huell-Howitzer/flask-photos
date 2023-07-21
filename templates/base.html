@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" id="theme-style">
+    <script src="https://kit.fontawesome.com/ed2d1d262f.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    {% block theme_css %}
+        {% if theme == 'light' %}
+            <link rel="stylesheet" href="{{ url_for('static', filename='css/light-theme.css') }}">
+        {% elif theme == 'dark' %}
+            <link rel="stylesheet" href="{{ url_for('static', filename='css/dark-theme.css') }}">
+        {% else %}
+            <link rel="stylesheet" href="{{ url_for('static', filename='css/light-theme.css') }}">
+        {% endif %}
+    {% endblock %}
+</head>
+
+<body>
+<div id="sideNavigation" class="sidenav">
+    <a href="#" class="close-btn"><span class="icon"><i class="fa-sharp fa-light fa-circle-xmark"></i></span></a>
+    <a href="/static"><span class="icon"><i class="fas fa-home"></i></span>Home</a>
+    <a href="/run"><span class="icon"><i class="fa-solid fa-wand-magic-sparkles"></i></span>RegEx Tool</a>
+    <a href="/robot_framework/reports/report" target="_blank"><span class="icon"><i class="fas fa-chart-bar"></i></span>Reports</a>
+    <a href="/about"><span class="icon"><i class="fas fa-info"></i></span>About</a>
+    <a href="/tts"><span class="icon"><i class="fas fa-volume-up"></i></span>Text-to-Speech</a>
+    <a href="/hyperloop"><span class="icon"><i class="fas fa-rocket"></i></span>Hyperloop</a>
+    <a href="/generate_images"><span class="icon"><i class="fa-sharp fa-light fa-image"></i></span>Image Generator</a>
+    <a href="/image_classification"><span class="icon"><i class="fa-duotone fa-magnifying-glass"></i></span>Image Classification</a>
+    <a href="/settings"><span class="icon"><i class="fas fa-cog"></i></span>Settings</a>
+</div>
+
+
+<nav class="topnav">
+    <a href="#" class="ham-icon">
+        <span class="robot-icon"><i class="fas fa-robot fa-3x"></i></span>
+    </a>
+</nav>
+
+<section id="main">
+    {% block content %}
+    {% endblock %}
+</section>
+
+<script>
+    $(document).ready(function () {
+        $("a.ham-icon").click(function (event) {
+            $("#sideNavigation").css("width", "250px");
+            $("#main").css("margin-left", "250px");
+        });
+
+        $("a.close-btn").click(function (event) {
+            $("#sideNavigation").css("width", "0");
+            $("#main").css("margin-left", "0");
+        });
+    });
+</script>
+</body>
+</html>
+
+
+

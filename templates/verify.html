@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <style>
+        body {
+            background-color: #FFCCCC; /* Set a unique background color for the verify page */
+        }
+    </style>
+    <h1>Verify</h1>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        <div class="field">
+            <label class="label">{{ form.verification_code.label }}</label>
+            <div class="control">
+                {{ form.verification_code(class_="input") }}
+                {% if form.verification_code.errors %}
+                    <p class="help is-danger">{{ form.verification_code.errors[0] }}</p>
+                {% endif %}
+            </div>
+        </div>
+        <div class="field">
+            <div class="control">
+                {{ form.submit(class_="button is-primary") }}
+            </div>
+        </div>
+    </form>
+{% endblock %}
+
+
+
